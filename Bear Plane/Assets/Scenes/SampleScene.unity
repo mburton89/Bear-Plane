@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 114479124}
   - component: {fileID: 114479123}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: SimplePlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,8 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84bfc315c4aa3ad4bb30a44190267a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 5
-  maxVelocity: 2.5
+  acceleration: 10
+  maxVelocity: 4
+  friction: 2
   armor: 1
   currentVelocity: 0
   rigidbody2D: {fileID: 0}

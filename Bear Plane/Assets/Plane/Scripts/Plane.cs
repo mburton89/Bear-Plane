@@ -6,6 +6,7 @@ public abstract class Plane : MonoBehaviour
 {
     public float acceleration;
     public float maxVelocity;
+    public float friction;
     public int armor;
 
     [HideInInspector] public float currentVelocity;
