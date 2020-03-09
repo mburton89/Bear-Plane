@@ -22,9 +22,9 @@ public sealed class SimplePlane : Plane
     {
 
         Vector2 Movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        _absCurrentVelocity = (Mathf.Abs(rigidbody2D.velocity.x) + Mathf.Abs(rigidbody2D.velocity.y));
         Move(Movement);
         _previousVelocity = new Vector2(rigidbody2D.velocity.x, rigidbody2D.velocity.y);
-        _absCurrentVelocity = (Mathf.Abs(rigidbody2D.velocity.x) + Mathf.Abs(rigidbody2D.velocity.y));
         //Debug.Log("rigidbody2D.velocity: " + currentVelocity);
 
         //print(_absCurrentVelocity);
@@ -52,11 +52,13 @@ public sealed class SimplePlane : Plane
         //    rigidbody2D.drag = friction;
         //}
 
-        rigidbody2D.AddForce(direction * acceleration);
+       
         if (_absCurrentVelocity >= maxVelocity)
         {
             rigidbody2D.velocity = _previousVelocity;
         }
+
+        rigidbody2D.AddForce(direction * acceleration);
     }
 
     void HandleInput()
