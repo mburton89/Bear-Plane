@@ -53,10 +53,10 @@ public sealed class SimplePlane : Plane
         //}
 
         rigidbody2D.AddForce(direction * acceleration);
-        //if (_absCurrentVelocity >= maxVelocity)
-        //{
-        //    rigidbody2D.velocity = _previousVelocity;
-        //}
+        if (_absCurrentVelocity >= maxVelocity)
+        {
+            rigidbody2D.velocity = _previousVelocity;
+        }
     }
 
     void HandleInput()
