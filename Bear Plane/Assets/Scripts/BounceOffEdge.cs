@@ -14,8 +14,7 @@ public class BounceOffEdge : MonoBehaviour
         print(Camera.main.WorldToScreenPoint(transform.position));
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         Vector3 tmpPos = Camera.main.WorldToScreenPoint(transform.position);
 
