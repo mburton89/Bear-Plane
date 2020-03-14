@@ -23,7 +23,6 @@ public class ScreenShaker : MonoBehaviour
             float _y = 0;
             _x = Random.Range(-_intensity, _intensity);
             _y = Random.Range(-_intensity, _intensity);
-            print(_x + ", " + _y);
             Vector3 newCameraPos = new Vector3(_x, _y, -10);
             transform.position = newCameraPos;
         }
@@ -40,5 +39,26 @@ public class ScreenShaker : MonoBehaviour
         yield return new WaitForSeconds(_duration);
         _canShake = false;
         transform.position = new Vector3(0, 0, -10);
+    }
+
+    public void ShakeScreen(float intensity, float duration)
+    {
+        StartCoroutine(shakeScreenCo(intensity, duration));
+    }
+
+    IEnumerator shakeScreenCo(float intensity, float duration)
+    {
+        float initialIntensity = _intensity;
+        _intensity = intensity;
+
+        float initialDuration = duration;
+        _duration = duration;
+
+        _canShake = true;
+        yield return new WaitForSeconds(_duration);
+        _canShake = false;
+        transform.position = new Vector3(0, 0, -10);
+        _intensity = initialIntensity;
+        _duration = initialDuration;
     }
 }
