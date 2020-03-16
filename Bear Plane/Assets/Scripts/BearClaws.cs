@@ -22,7 +22,7 @@ public class BearClaws : MonoBehaviour
             Plane plane = collision.GetComponent<Plane>();
             plane.HandleHit(damageToGive);
             _audioSource.Play();
-
+            ScreenShaker.Instance.ShakeScreen(0.1f, 0.2f);
             if (plane.hasPilot)
             {
                 _controller.ThrowPilot();

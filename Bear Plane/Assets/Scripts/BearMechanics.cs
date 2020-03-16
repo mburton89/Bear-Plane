@@ -16,6 +16,7 @@ public class BearMechanics : MonoBehaviour
     [SerializeField] private Sprite _idle;
 
     private bool _canAttack;
+    private float _shouldAttack;
 
     private void Awake()
     {
@@ -58,19 +59,22 @@ public class BearMechanics : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Attack"))
         {
             Pound();
         }
 
-        //if (Input.GetMouseButtonDown(1))
-        //{
-        //    LatchOnToPlane();
-        //}
-        //else if (Input.GetMouseButtonUp(1))
-        //{
-        //    LatchOffOfPlane();
-        //}
+        DetermineAttackController();
+    }
+
+    void DetermineAttackController()
+    {
+        _shouldAttack = Input.GetAxis("AttackTrigger");
+
+        if (_shouldAttack == 1 && _canAttack)
+        {
+            Pound();
+        }
     }
 
     public void LatchOnToPlane()
@@ -103,7 +107,6 @@ public class BearMechanics : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         _bearClaws.Attack();
         _sprite.sprite = _pound;
-        ScreenShaker.Instance.ShakeScreen(0.1f, 0.2f);
         yield return new WaitForSeconds(0.1f);
         _bearClaws.FinishAttack();
         _sprite.sprite = _idle;

@@ -18,6 +18,7 @@ public class ShootPlayer : MonoBehaviour
 
     void Update()
     {
+        if (_player == null) return;
         _positionToFireTowards = _player.transform.position;
         _heading = _positionToFireTowards - transform.position;
         _distanceToPlayer = _heading.magnitude;

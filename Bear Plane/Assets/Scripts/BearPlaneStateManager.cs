@@ -36,6 +36,8 @@ public class BearPlaneStateManager : MonoBehaviour
     [SerializeField] private AudioSource _openWings;
     [SerializeField] private AudioSource _closeWings;
 
+    private bool _isPlane;
+
     void Awake()
     {
         Instance = this;
@@ -49,18 +51,38 @@ public class BearPlaneStateManager : MonoBehaviour
 
     void Update()
     {
+        //DetermineIsPlaneMouse();
+        DetermineIsPlaneController();
+    }
+
+    void DetermineIsPlaneMouse()
+    {
         if (Input.GetMouseButtonDown(1))
         {
             SwitchToPlaneMechanics();
         }
-        else if(Input.GetMouseButtonUp(1))
+        else if (Input.GetMouseButtonUp(1))
         {
             SwitchToBearMechanics();
         }
     }
 
+    void DetermineIsPlaneController()
+    {
+        if (Input.GetButtonDown("Jump") && !_platformerCharacter.controller.isGrounded() && !_isPlane)
+        {
+            SwitchToPlaneMechanics();
+        }
+        else if (Input.GetButtonUp("Jump") && _isPlane)
+        {
+            SwitchToBearMechanics();
+        }
+
+    }
+
     void SwitchToBearMechanics()
     {
+        _isPlane = false;
         _sprite.sprite = _idle;
         _planeMechanics.enabled = false;
         _bearMechanics.enabled = true;
@@ -72,6 +94,7 @@ public class BearPlaneStateManager : MonoBehaviour
     void SwitchToPlaneMechanics()
     {
         //TODO Force fly sprite if pound is still happening
+        _isPlane = true;
         _sprite.sprite = _fly;
         _planeMechanics.enabled = true;
         _bearMechanics.enabled = false;
@@ -114,12 +137,7 @@ public class BearPlaneStateManager : MonoBehaviour
 
     public void HandleHit(int damageTaken)
     {
-        print("Health Before Damage: " + _health);
-        print("Damage to Take: " + damageTaken);
-
         _health = _health - damageTaken;
-
-        print("Health After Damage: " + _health);
 
         if (_health <= 0)
         {

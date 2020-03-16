@@ -236,7 +236,7 @@ MonoBehaviour:
   energyToGivePlayer: 0
   fireRate: 0
   currentArmor: 0
-  rigidbody2D: {fileID: 0}
+  rigidBody2D: {fileID: 0}
   _fullHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 05d8e585d109c1a459bdfc3a44266326,
     type: 3}
   _lowHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 78adaa260207d7a4c8864e6acec018c4,
@@ -970,6 +970,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!50 &661443071 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8301982599150984143, guid: 221a4e71693ca8347a2a42add0f35d52,
+    type: 3}
+  m_PrefabInstance: {fileID: 1362198917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &732386474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,6 +1399,7 @@ GameObject:
   - component: {fileID: 963501991}
   - component: {fileID: 963501992}
   - component: {fileID: 963501993}
+  - component: {fileID: 963501994}
   m_Layer: 0
   m_Name: EnemyPlanes
   m_TagString: Untagged
@@ -1463,6 +1470,27 @@ MonoBehaviour:
   - {fileID: 1176713042, guid: 97ca995efeeae30449c349960669b186, type: 3}
   _secondsBetweenSpawns: 3
   _x: -11.5
+  _maxY: 3
+  _minY: -4
+--- !u!114 &963501994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963501990}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684964125fb0fa242a62dddc6654177f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyPlanePrefabs:
+  - {fileID: 1176713042, guid: 9c47dd356a929a44e844ef7c3a4cc665, type: 3}
+  - {fileID: 1176713042, guid: 56170f17cc1e7e1479405da14808f7b3, type: 3}
+  - {fileID: 1176713042, guid: 97ca995efeeae30449c349960669b186, type: 3}
+  - {fileID: 1176713042, guid: 9c47dd356a929a44e844ef7c3a4cc665, type: 3}
+  _secondsBetweenSpawns: 3
+  _x: 11.5
   _maxY: 3
   _minY: -4
 --- !u!1 &996541472
@@ -1538,6 +1566,7 @@ GameObject:
   - component: {fileID: 1046296617}
   - component: {fileID: 1046296619}
   - component: {fileID: 1046296620}
+  - component: {fileID: 1046296621}
   m_Layer: 0
   m_Name: DeathZone
   m_TagString: Untagged
@@ -1607,6 +1636,18 @@ EdgeCollider2D:
   m_Points:
   - {x: -10, y: 0}
   - {x: -10, y: 12}
+--- !u!114 &1046296621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046296616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28e62214b5ac2b4eb95384ef8ac60ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1067698254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,20 +2019,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8301982599150984142, guid: 221a4e71693ca8347a2a42add0f35d52,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 8301982599150984142, guid: 221a4e71693ca8347a2a42add0f35d52,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.73
-      objectReference: {fileID: 0}
-    - target: {fileID: 8301982599150984141, guid: 221a4e71693ca8347a2a42add0f35d52,
-        type: 3}
+    - target: {fileID: 1267345392, guid: 221a4e71693ca8347a2a42add0f35d52, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267345392, guid: 221a4e71693ca8347a2a42add0f35d52, type: 3}
+      propertyPath: rigidBody2D
+      value: 
+      objectReference: {fileID: 661443071}
+    - target: {fileID: 1267345392, guid: 221a4e71693ca8347a2a42add0f35d52, type: 3}
+      propertyPath: maxArmor
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267345392, guid: 221a4e71693ca8347a2a42add0f35d52, type: 3}
+      propertyPath: maxSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267345392, guid: 221a4e71693ca8347a2a42add0f35d52, type: 3}
+      propertyPath: acceleration
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 221a4e71693ca8347a2a42add0f35d52, type: 3}
@@ -3268,7 +3314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &2087766902
 AudioSource:
   m_ObjectHideFlags: 0

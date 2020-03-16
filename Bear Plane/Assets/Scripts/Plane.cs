@@ -11,7 +11,7 @@ public class Plane : MonoBehaviour
     public float energyToGivePlayer;
     public float fireRate;
     [HideInInspector] public int currentArmor;
-    [HideInInspector] public Rigidbody2D rigidbody2D;
+    [HideInInspector] public Rigidbody2D rigidBody2D;
     [SerializeField] private ThrustParticle _fullHealthThrustParticlePrefab;
     [SerializeField] private ThrustParticle _lowHealthThrustParticlePrefab;
     [SerializeField] private ThrustParticle _noHealthThrustParticlePrefab;
@@ -44,9 +44,9 @@ public class Plane : MonoBehaviour
         //}
     }
 
-    private void Awake()
+    public void Awake()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidBody2D = GetComponent<Rigidbody2D>();
         currentArmor = maxArmor;
     }
 
@@ -68,15 +68,15 @@ public class Plane : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (rigidbody2D.velocity.magnitude > maxSpeed)
+        if (rigidBody2D.velocity.magnitude > maxSpeed)
         {
-            rigidbody2D.velocity = rigidbody2D.velocity.normalized * maxSpeed;
+            rigidBody2D.velocity = rigidBody2D.velocity.normalized * maxSpeed;
         }
     }
 
     public void Move(Vector2 direction)
     {
-        rigidbody2D.AddForce(direction * acceleration);
+        rigidBody2D.AddForce(direction * acceleration);
     }
 
     public void CreateThrustParticles()
@@ -97,8 +97,8 @@ public class Plane : MonoBehaviour
         else
         {
             ThrustParticle thrustParticle = Instantiate(_noHealthThrustParticlePrefab, spawnPos, this.transform.rotation, this.transform);
-            rigidbody2D.rotation += -0.1f;
-            rigidbody2D.gravityScale += 0.002f;
+            rigidBody2D.rotation += -0.1f;
+            rigidBody2D.gravityScale += 0.002f;
         }
     }
 
@@ -122,6 +122,11 @@ public class Plane : MonoBehaviour
         }
         Instantiate(_explosionPrefab, this.transform.position, this.transform.rotation);
         Destroy(gameObject);
+
+        if (GetComponent<BearPlaneStateManager>())
+        {
+            DeathManager.Instance.HandleDeath();
+        }
     }
 
     public void HandleHit(int damageTaken)
@@ -132,7 +137,7 @@ public class Plane : MonoBehaviour
         {
             if (currentArmor == 1)
             {
-                rigidbody2D.freezeRotation = false;
+                rigidBody2D.freezeRotation = false;
                 isToast = true;
                 if (GetComponent<PlaneAI>())
                 {
