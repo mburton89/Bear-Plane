@@ -6,6 +6,11 @@ public class Bullet : Projectile
 {
     public override void Splode()
     {
-        Destroy(gameObject);
+        //TODO lil baby splosion
+    }
+
+    private void OnDestroy()
+    {
+        Splode();
     }
 }

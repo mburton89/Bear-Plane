@@ -10,6 +10,8 @@ public class Plane : MonoBehaviour
     public float projectileSpeed;
     public float energyToGivePlayer;
     public float fireRate;
+    [Range(0, 20)]
+    public float sightDistance;
     [HideInInspector] public int currentArmor;
     [HideInInspector] public Rigidbody2D rigidBody2D;
     [SerializeField] private ThrustParticle _fullHealthThrustParticlePrefab;
@@ -48,6 +50,11 @@ public class Plane : MonoBehaviour
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
         currentArmor = maxArmor;
+    }
+
+    private void OnDestroy()
+    {
+        EnemySpawner.Instance.CheckEnemyCount();
     }
 
     private void Update()
@@ -117,6 +124,7 @@ public class Plane : MonoBehaviour
     {
         if (tag == "Enemy")
         {
+            print("YO");
             BearPlaneStateManager.Instance.AddEnergy(energyToGivePlayer);
             ScoreManager.Instance.IncrementScore();
         }

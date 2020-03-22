@@ -20,6 +20,7 @@ public class DeathManager : MonoBehaviour
     private IEnumerator HandleDeathCo()
     {
         yield return new WaitForSeconds(2);
+        Destroy(EnemySpawner.Instance.gameObject);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -18,13 +18,13 @@ public abstract class Projectile : MonoBehaviour
         if (collision.tag == "Enemy" && collision.gameObject != _firer)
         {
             collision.GetComponent<Plane>().HandleHit(damageToGive);
-            Splode();
+            Destroy(gameObject);
         }
 
         if (collision.tag == "Player" && collision.gameObject != _firer && !GetComponent<FlungPilot>())
         {
             collision.GetComponent<BearPlaneStateManager>().HandleHit(damageToGive);
-            Splode();
+            Destroy(gameObject);
         }
     }
 

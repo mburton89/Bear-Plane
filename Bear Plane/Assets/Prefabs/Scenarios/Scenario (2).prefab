@@ -548,8 +548,11 @@ MonoBehaviour:
   maxSpeed: 5
   maxArmor: 5
   projectileSpeed: 800
+  energyToGivePlayer: 0.15
+  fireRate: 0
+  sightDistance: 0
   currentArmor: 0
-  rigidbody2D: {fileID: 0}
+  rigidBody2D: {fileID: 0}
   _fullHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 05d8e585d109c1a459bdfc3a44266326,
     type: 3}
   _lowHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 78adaa260207d7a4c8864e6acec018c4,
@@ -566,6 +569,8 @@ MonoBehaviour:
   _pilotPrefab: {fileID: 325042379122727979, guid: 7b0512692a0ca424787a053e3122db2b,
     type: 3}
   hasPilot: 1
+  isToast: 0
+  canShoot: 1
 --- !u!114 &7430250348979203538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,7 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionToMoveTo: {x: -11, y: -2, z: 0}
-  _moveTowardPlayer: 0
+  currentMovementType: 0
 --- !u!1 &7430250349110412790
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,8 +798,11 @@ MonoBehaviour:
   maxSpeed: 5
   maxArmor: 5
   projectileSpeed: 800
+  energyToGivePlayer: 0.15
+  fireRate: 0
+  sightDistance: 0
   currentArmor: 0
-  rigidbody2D: {fileID: 0}
+  rigidBody2D: {fileID: 0}
   _fullHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 05d8e585d109c1a459bdfc3a44266326,
     type: 3}
   _lowHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 78adaa260207d7a4c8864e6acec018c4,
@@ -811,6 +819,8 @@ MonoBehaviour:
   _pilotPrefab: {fileID: 325042379122727979, guid: 7b0512692a0ca424787a053e3122db2b,
     type: 3}
   hasPilot: 1
+  isToast: 0
+  canShoot: 1
 --- !u!114 &7430250349124789586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,7 +834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionToMoveTo: {x: -11, y: 2, z: 0}
-  _moveTowardPlayer: 0
+  currentMovementType: 0
 --- !u!1 &7430250349333484626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,8 +1159,11 @@ MonoBehaviour:
   maxSpeed: 5
   maxArmor: 5
   projectileSpeed: 800
+  energyToGivePlayer: 0.15
+  fireRate: 0
+  sightDistance: 0
   currentArmor: 0
-  rigidbody2D: {fileID: 0}
+  rigidBody2D: {fileID: 0}
   _fullHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 05d8e585d109c1a459bdfc3a44266326,
     type: 3}
   _lowHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 78adaa260207d7a4c8864e6acec018c4,
@@ -1167,6 +1180,8 @@ MonoBehaviour:
   _pilotPrefab: {fileID: 325042379122727979, guid: 7b0512692a0ca424787a053e3122db2b,
     type: 3}
   hasPilot: 1
+  isToast: 0
+  canShoot: 1
 --- !u!114 &7430250349623128723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1180,7 +1195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionToMoveTo: {x: -11, y: 0, z: 0}
-  _moveTowardPlayer: 0
+  currentMovementType: 0
 --- !u!1 &7430250349661428504
 GameObject:
   m_ObjectHideFlags: 0

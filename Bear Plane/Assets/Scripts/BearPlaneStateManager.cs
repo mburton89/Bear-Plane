@@ -116,6 +116,7 @@ public class BearPlaneStateManager : MonoBehaviour
 
     public void AddEnergy(float amountToAdd)
     {
+        print("amountToAdd " + amountToAdd);
         _energy += amountToAdd;
         if (_energy > maxEnergy)
         {

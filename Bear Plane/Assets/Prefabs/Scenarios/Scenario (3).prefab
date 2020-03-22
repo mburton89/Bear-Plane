@@ -491,7 +491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6180103823114296433}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11, y: 0, z: 0}
+  m_LocalPosition: {x: -13, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 787738439593996606}
@@ -626,8 +626,11 @@ MonoBehaviour:
   maxSpeed: 5
   maxArmor: 5
   projectileSpeed: 800
+  energyToGivePlayer: 0.15
+  fireRate: 0
+  sightDistance: 0
   currentArmor: 0
-  rigidbody2D: {fileID: 0}
+  rigidBody2D: {fileID: 0}
   _fullHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 05d8e585d109c1a459bdfc3a44266326,
     type: 3}
   _lowHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 78adaa260207d7a4c8864e6acec018c4,
@@ -645,6 +648,7 @@ MonoBehaviour:
     type: 3}
   hasPilot: 1
   isToast: 0
+  canShoot: 1
 --- !u!114 &6180103823114296435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,8 +661,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf88cb1eed8830448275109706279da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionToMoveTo: {x: -11, y: 0, z: 0}
-  _moveTowardPlayer: 0
+  positionToMoveTo: {x: -7.5, y: 0, z: 0}
+  currentMovementType: 0
 --- !u!1 &6459830077729160333
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,7 +851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7601988561946373572}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12, y: -2, z: 0}
+  m_LocalPosition: {x: 13, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3915044320130629771}
@@ -982,8 +986,11 @@ MonoBehaviour:
   maxSpeed: 5
   maxArmor: 5
   projectileSpeed: 800
+  energyToGivePlayer: 0.15
+  fireRate: 0
+  sightDistance: 0
   currentArmor: 0
-  rigidbody2D: {fileID: 0}
+  rigidBody2D: {fileID: 0}
   _fullHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 05d8e585d109c1a459bdfc3a44266326,
     type: 3}
   _lowHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 78adaa260207d7a4c8864e6acec018c4,
@@ -1001,6 +1008,7 @@ MonoBehaviour:
     type: 3}
   hasPilot: 1
   isToast: 0
+  canShoot: 1
 --- !u!114 &7601988561946373573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1013,8 +1021,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf88cb1eed8830448275109706279da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionToMoveTo: {x: -11, y: -2, z: 0}
-  _moveTowardPlayer: 0
+  positionToMoveTo: {x: 7.5, y: -1, z: 0}
+  currentMovementType: 0
 --- !u!1 &8089359917941645587
 GameObject:
   m_ObjectHideFlags: 0

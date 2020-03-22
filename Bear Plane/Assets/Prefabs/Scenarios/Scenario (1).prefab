@@ -418,8 +418,11 @@ MonoBehaviour:
   maxSpeed: 5
   maxArmor: 5
   projectileSpeed: 800
+  energyToGivePlayer: 0.15
+  fireRate: 0
+  sightDistance: 0
   currentArmor: 0
-  rigidbody2D: {fileID: 0}
+  rigidBody2D: {fileID: 0}
   _fullHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 05d8e585d109c1a459bdfc3a44266326,
     type: 3}
   _lowHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 78adaa260207d7a4c8864e6acec018c4,
@@ -437,6 +440,7 @@ MonoBehaviour:
     type: 3}
   hasPilot: 1
   isToast: 0
+  canShoot: 1
 --- !u!114 &1718048336898038180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,7 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionToMoveTo: {x: 6, y: 0, z: 0}
-  _moveTowardPlayer: 0
+  currentMovementType: 0
 --- !u!1 &1718048337041320991
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,8 +778,11 @@ MonoBehaviour:
   maxSpeed: 5
   maxArmor: 5
   projectileSpeed: 800
+  energyToGivePlayer: 0.15
+  fireRate: 0
+  sightDistance: 0
   currentArmor: 0
-  rigidbody2D: {fileID: 0}
+  rigidBody2D: {fileID: 0}
   _fullHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 05d8e585d109c1a459bdfc3a44266326,
     type: 3}
   _lowHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 78adaa260207d7a4c8864e6acec018c4,
@@ -793,6 +800,7 @@ MonoBehaviour:
     type: 3}
   hasPilot: 1
   isToast: 0
+  canShoot: 1
 --- !u!114 &1718048337644457477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,7 +814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionToMoveTo: {x: 5, y: 2, z: 0}
-  _moveTowardPlayer: 0
+  currentMovementType: 0
 --- !u!1 &1718048337951505066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,8 +1604,11 @@ MonoBehaviour:
   maxSpeed: 5
   maxArmor: 5
   projectileSpeed: 800
+  energyToGivePlayer: 0.15
+  fireRate: 0
+  sightDistance: 0
   currentArmor: 0
-  rigidbody2D: {fileID: 0}
+  rigidBody2D: {fileID: 0}
   _fullHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 05d8e585d109c1a459bdfc3a44266326,
     type: 3}
   _lowHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 78adaa260207d7a4c8864e6acec018c4,
@@ -1615,6 +1626,7 @@ MonoBehaviour:
     type: 3}
   hasPilot: 1
   isToast: 0
+  canShoot: 1
 --- !u!114 &8624678650957771963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,4 +1640,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionToMoveTo: {x: 7, y: -2, z: 0}
-  _moveTowardPlayer: 0
+  currentMovementType: 0

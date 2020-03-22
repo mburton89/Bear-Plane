@@ -17,6 +17,11 @@ public class FlungPilot : Projectile
         rigidbody2D.AddForce(windForceVector2);
     }
 
+    private void OnDestroy()
+    {
+        Splode();
+    }
+
     public override void Splode()
     {
         Instantiate(_bloodPrefab, this.transform.position, this.transform.rotation);

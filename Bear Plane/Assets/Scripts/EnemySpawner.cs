@@ -9,6 +9,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Plane _enemyPlanePrefab;
     [SerializeField] List<Vector3> _spawnPositions;
     [SerializeField] List<GameObject> _scenarioPrefabs;
+    [SerializeField] List<GameObject> _cloudGroupPrefabs;
+    [SerializeField] private Vector3 _cloudSpawnPosition;
     private GameObject _currentScenario;
     private int _enemyCount;
 
@@ -19,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        _enemyCount = FindObjectsOfType<Plane>().Length;
+        SpawnEnemies();
     }
 
     void SpawnEnemies(int numberOfPlanes, Plane planeType)
@@ -32,18 +34,43 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemies()
     {
-        int randomScenario = Random.Range(0, _scenarioPrefabs.Count);
-        _currentScenario = Instantiate(_scenarioPrefabs[randomScenario], transform.position, transform.rotation, transform);
-        _enemyCount = FindObjectsOfType<Plane>().Length;
+        int randomScenario = Random.Range(0, 2);
+        if (randomScenario == 1)
+        {
+            SpawnRandomPlaneGroup();
+        }
+        else
+        {
+            SpawnRandomCloudGroup();
+        }
     }
 
     public void CheckEnemyCount()
     {
-        int enemyCount = FindObjectsOfType<Plane>().Length;
-        if (enemyCount <= 1)
+        int enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
+        print(enemyCount);
+
+        if (enemyCount <= 0)
         {
             Destroy(_currentScenario);
             SpawnEnemies();
         }
+    }
+
+    void SpawnRandomCloudGroup()
+    {
+        int randomScenario = Random.Range(0, _cloudGroupPrefabs.Count);
+        _currentScenario = Instantiate(_cloudGroupPrefabs[randomScenario], _cloudSpawnPosition, transform.rotation, transform);
+        _enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        print("SpawnRandomCloudGroup " + randomScenario);
+    }
+
+    void SpawnRandomPlaneGroup()
+    {
+        int randomScenario = Random.Range(0, 4);
+        _currentScenario = Instantiate(_scenarioPrefabs[randomScenario], transform.position, transform.rotation, transform);
+        _enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        print("SpawnRandomPlaneGroup " + randomScenario);
     }
 }

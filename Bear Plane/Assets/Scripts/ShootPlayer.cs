@@ -22,7 +22,7 @@ public class ShootPlayer : MonoBehaviour
         _positionToFireTowards = _player.transform.position;
         _heading = _positionToFireTowards - transform.position;
         _distanceToPlayer = _heading.magnitude;
-        if (_distanceToPlayer > 1.5f && _distanceToPlayer < 8 && _plane.hasPilot && !_plane.isToast && _plane.canShoot)
+        if (_distanceToPlayer > 1.5f && _distanceToPlayer < _plane.sightDistance && _plane.hasPilot && !_plane.isToast && _plane.canShoot)
         {
             _plane.FireProjectile(new Vector2(_heading.x, _heading.y));
         }

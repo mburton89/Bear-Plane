@@ -481,8 +481,11 @@ MonoBehaviour:
   maxSpeed: 5
   maxArmor: 5
   projectileSpeed: 800
+  energyToGivePlayer: 0.15
+  fireRate: 0
+  sightDistance: 0
   currentArmor: 0
-  rigidbody2D: {fileID: 0}
+  rigidBody2D: {fileID: 0}
   _fullHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 05d8e585d109c1a459bdfc3a44266326,
     type: 3}
   _lowHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 78adaa260207d7a4c8864e6acec018c4,
@@ -500,6 +503,7 @@ MonoBehaviour:
     type: 3}
   hasPilot: 1
   isToast: 0
+  canShoot: 1
 --- !u!114 &4755426126978776002
 MonoBehaviour:
   m_ObjectHideFlags: 0
