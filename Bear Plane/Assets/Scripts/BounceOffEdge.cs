@@ -10,8 +10,6 @@ public class BounceOffEdge : MonoBehaviour
     void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
-
-        print(Camera.main.WorldToScreenPoint(transform.position));
     }
 
     void LateUpdate()

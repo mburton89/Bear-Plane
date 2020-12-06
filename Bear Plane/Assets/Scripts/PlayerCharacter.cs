@@ -40,4 +40,10 @@ public class PlayerCharacter : MonoBehaviour
             _jump = false;
         }
     }
+
+    public void HandlePhoneInput(Vector2 initialTouchPosition, Vector2 currentTouchPosition)
+    {
+        Vector2 directionRelativeToPhoneMiddle = currentTouchPosition - initialTouchPosition;
+        controller.Move(directionRelativeToPhoneMiddle.x * Time.fixedDeltaTime, _crouch, _jump);
+    }
 }

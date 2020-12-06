@@ -51,4 +51,13 @@ public sealed class PlayerPlane : Plane
         yield return new WaitForSeconds(fireRate);
         _canFire = true;
     }
+
+    public void HandlePhoneInput(Vector2 initialTouchPosition, Vector2 currentTouchPosition)
+    {
+        print("initialTouchPosition: " + initialTouchPosition);
+        print("currentTouchPosition: " + currentTouchPosition);
+
+        Vector2 directionRelativeToPhoneMiddle = currentTouchPosition - initialTouchPosition;
+        Move(directionRelativeToPhoneMiddle.normalized);
+    }
 }

@@ -77,7 +77,18 @@ public class BearPlaneStateManager : MonoBehaviour
         {
             SwitchToBearMechanics();
         }
+    }
 
+    public void HandleJumpButtonPressed(bool isPressed)
+    {
+        if (isPressed && !_platformerCharacter.controller.isGrounded() && !_isPlane)
+        {
+            SwitchToPlaneMechanics();
+        }
+        else if (!isPressed && _isPlane)
+        {
+            SwitchToBearMechanics();
+        }
     }
 
     void SwitchToBearMechanics()
