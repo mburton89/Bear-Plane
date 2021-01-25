@@ -20,10 +20,10 @@ public class ExplosionShrapnel : MonoBehaviour
             collision.GetComponent<Plane>().HandleHit(_damageToGive);
         }
 
-        if (collision.tag == "Player" && collision.gameObject)
-        {
-            collision.GetComponent<BearPlaneStateManager>().HandleHit(_damageToGive);
-        }
+        //if (collision.tag == "Player" && collision.gameObject)
+        //{
+        //    collision.GetComponent<BearPlaneStateManager>().HandleHit(_damageToGive);
+        //}
     }
 
     IEnumerator Exist()

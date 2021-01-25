@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3965753812500288788}
   - component: {fileID: 7555389392357249943}
   - component: {fileID: 3933447216530593514}
+  - component: {fileID: 5639011160878429479}
   m_Layer: 0
   m_Name: EnemyPlane - SuicideBomber
   m_TagString: Enemy
@@ -120,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 25
-  maxSpeed: 3.2
-  maxArmor: 5
+  maxSpeed: 3
+  maxArmor: 2
   projectileSpeed: 800
   energyToGivePlayer: 0.15
   fireRate: 2
@@ -222,6 +223,18 @@ MonoBehaviour:
   _secondsBetweenBeeps: 0.7
   _secondsBetweenBeepsQuickener: 0.8
   _beep: {fileID: 7395517751255263826}
+--- !u!114 &5639011160878429479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807640411192210454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60cac10cda2c85c4a94876ec8dd18a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1915928355501582098
 GameObject:
   m_ObjectHideFlags: 0

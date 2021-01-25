@@ -8,6 +8,11 @@ public abstract class Projectile : MonoBehaviour
     private GameObject _firer;
     public int damageToGive;
 
+    private void Start()
+    {
+        Destroy(gameObject, 3);
+    }
+
     public void Init(GameObject firer)
     {
         this._firer = firer;
@@ -18,6 +23,7 @@ public abstract class Projectile : MonoBehaviour
         if (collision.tag == "Enemy" && collision.gameObject != _firer)
         {
             collision.GetComponent<Plane>().HandleHit(damageToGive);
+            collision.GetComponent<Plane>().LaunchPilot(40);
             Splode();
         }
 

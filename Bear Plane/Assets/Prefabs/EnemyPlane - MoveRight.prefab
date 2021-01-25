@@ -161,13 +161,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 25
-  maxSpeed: 2
-  maxArmor: 5
+  maxSpeed: 2.5
+  maxArmor: 2
   projectileSpeed: 800
   energyToGivePlayer: 0.15
   fireRate: 2
   currentArmor: 0
-  rigidbody2D: {fileID: 0}
+  rigidBody2D: {fileID: 0}
   _fullHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 05d8e585d109c1a459bdfc3a44266326,
     type: 3}
   _lowHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 78adaa260207d7a4c8864e6acec018c4,
@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc83077cb10866d4890db443341b869f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _flyLeft: 0
 --- !u!1 &1915928355501582098
 GameObject:
   m_ObjectHideFlags: 0

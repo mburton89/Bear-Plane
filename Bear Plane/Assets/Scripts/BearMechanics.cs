@@ -20,7 +20,7 @@ public class BearMechanics : MonoBehaviour
 
     private void Awake()
     {
-        _bearClaws.Init(this);
+        //_bearClaws.Init(this);
         _canAttack = true;
     }
 
@@ -30,6 +30,11 @@ public class BearMechanics : MonoBehaviour
         {
             _currentPlane = collision.GetComponent<Plane>();
             _currentPlane.isControlling = true;
+        }
+
+        if (collision.GetComponent<FlungPilot>())
+        {
+            collision.GetComponent<FlungPilot>();
         }
     }
 

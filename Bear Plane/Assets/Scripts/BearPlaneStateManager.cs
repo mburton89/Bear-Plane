@@ -47,12 +47,13 @@ public class BearPlaneStateManager : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _energy = 1;
         _health = maxHealth;
+        SwitchToPlaneMechanics();
     }
 
     void Update()
     {
         //DetermineIsPlaneMouse();
-        DetermineIsPlaneController();
+        //DetermineIsPlaneController();
     }
 
     void DetermineIsPlaneMouse()

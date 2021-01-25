@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7597260980007038050}
   - component: {fileID: 6988035152474425378}
   - component: {fileID: 5693388861647726883}
+  - component: {fileID: 2908411216438137465}
   m_Layer: 0
   m_Name: EnemyPlane - GunnerMoveLeft
   m_TagString: Enemy
@@ -120,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 25
-  maxSpeed: 1.5
-  maxArmor: 5
+  maxSpeed: 2.5
+  maxArmor: 2
   projectileSpeed: 500
   energyToGivePlayer: 0.15
   fireRate: 2
@@ -215,6 +216,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8de9e26838d4bc84e8121cb41317f31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2908411216438137465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807640411192210454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60cac10cda2c85c4a94876ec8dd18a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1915928355501582098

@@ -27,7 +27,7 @@ public class FlyHorizontally : MonoBehaviour
 
     void Update()
     {
-        if (!_plane.isToast)
+        if (!_plane.isToast && _plane.hasPilot)
         {
             _plane.Move(_directionToFly);
         }

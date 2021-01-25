@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BearClaws : MonoBehaviour
 {
-    private BearMechanics _controller;
+    private PlayerPlane _controller;
     public float energyConsumptionAmount;
     [SerializeField] private Collider2D _collider;
     [SerializeField] private AudioSource _audioSource;
     public int damageToGive;
 
-    public void Init(BearMechanics controller)
+    public void Init(PlayerPlane controller)
     {
         _controller = controller;
     }
@@ -25,9 +25,21 @@ public class BearClaws : MonoBehaviour
             ScreenShaker.Instance.ShakeScreen(0.1f, 0.2f);
             if (plane.hasPilot)
             {
-                _controller.ThrowPilot();
+                plane.LaunchPilot(40);
                 plane.hasPilot = false;
+                //plane.Splode();
             }
+        }
+
+        if (collision.GetComponent<FlungPilot>())
+        {
+            collision.GetComponent<FlungPilot>().Splode();
+        }
+
+        if (collision.GetComponent<Bullet>())
+        {
+            collision.GetComponent<Bullet>().Init(this.gameObject);
+            collision.GetComponent<Rigidbody2D>().velocity = -collision.GetComponent<Rigidbody2D>().velocity * 1.5f;
         }
     }
 

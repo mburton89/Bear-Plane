@@ -2,14 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPlane : Plane
+public class EnemyPlane : MonoBehaviour
 {
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "Enemy")
+    //    {
+    //        collision.GetComponent<Plane>().Splode();
+    //        GetComponent<Plane>().Splode();
+    //    }
+    //}
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy")
+        if (collision.GetComponent<PlayerPlane>()) return;
+
+        if (collision.GetComponent<Plane>() && enabled == true)
         {
-            collision.GetComponent<Plane>().Splode();
-            GetComponent<Plane>().Splode();
+            Plane collidingPlane = collision.GetComponent<Plane>();
+            if (collidingPlane.enabled == true)
+            {
+                if (!collidingPlane.GetComponent<PlayerPlane>())
+                {
+                    collidingPlane.Splode();
+                }
+                GetComponent<Plane>().Splode();
+            }
         }
     }
 

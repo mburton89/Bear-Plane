@@ -26,23 +26,18 @@ public class Plane : MonoBehaviour
     [HideInInspector] public bool isToast = false;
     [HideInInspector] public bool canShoot = true;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<Plane>() && enabled == true)
-        {
-            Plane collidingPlane = collision.GetComponent<Plane>();
-            if (collidingPlane.enabled == true)
-            {
-                collidingPlane.Splode();
-                Splode();
-            }
-        }
-        //if (collision.tag == "Enemy" && tag == "Enemy")
-        //{
-        //    collision.GetComponent<Plane>().Splode();
-        //    Splode();
-        //}
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.GetComponent<Plane>() && enabled == true)
+    //    {
+    //        Plane collidingPlane = collision.GetComponent<Plane>();
+    //        if (collidingPlane.enabled == true)
+    //        {
+    //            collidingPlane.Splode();
+    //            Splode();
+    //        }
+    //    }
+    //}
 
     public void Awake()
     {
@@ -76,7 +71,10 @@ public class Plane : MonoBehaviour
 
     public void Move(Vector2 direction)
     {
-        rigidBody2D.AddForce(direction * acceleration);
+        if (rigidBody2D != null)
+        {
+            rigidBody2D.AddForce(direction * acceleration);
+        }
     }
 
     public void CreateThrustParticles()
@@ -86,14 +84,14 @@ public class Plane : MonoBehaviour
         Vector3 currentPos = this.transform.position;
         Vector3 spawnPos = new Vector3(currentPos.x + offsetX - .1f, currentPos.y + offsetY, 0);
 
-        if (currentArmor > 2)
+        if (currentArmor > 1)
         {
             ThrustParticle thrustParticle = Instantiate(_fullHealthThrustParticlePrefab, spawnPos, this.transform.rotation, this.transform);
         }
-        else if (currentArmor == 2)
-        {
-            ThrustParticle thrustParticle = Instantiate(_lowHealthThrustParticlePrefab, spawnPos, this.transform.rotation, this.transform);
-        }
+        //else if (currentArmor == 2)
+        //{
+        //    ThrustParticle thrustParticle = Instantiate(_lowHealthThrustParticlePrefab, spawnPos, this.transform.rotation, this.transform);
+        //}
         else
         {
             ThrustParticle thrustParticle = Instantiate(_noHealthThrustParticlePrefab, spawnPos, this.transform.rotation, this.transform);
@@ -115,6 +113,11 @@ public class Plane : MonoBehaviour
 
     public void Splode()
     {
+        if(hasPilot)
+        {
+            LaunchPilot(40);
+        }
+
         if (tag == "Enemy")
         {
             BearPlaneStateManager.Instance.AddEnergy(energyToGivePlayer);
@@ -159,7 +162,7 @@ public class Plane : MonoBehaviour
 
     public void LaunchPilot(int throwSpeed)
     {
-        Projectile pilot = Instantiate(_pilotPrefab, this.transform.position, this.transform.rotation, this.transform);
+        Projectile pilot = Instantiate(_pilotPrefab, this.transform.position, this.transform.rotation, null);
         pilot.Init(this.gameObject);
         pilot.GetComponent<Rigidbody2D>().AddForce(new Vector3(-0.5f, 1, 0) * throwSpeed);
 

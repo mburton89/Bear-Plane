@@ -7,6 +7,14 @@ public class FlungPilot : Projectile
     [SerializeField] private GameObject _bloodPrefab;
     float windForce;
     Vector2 windForceVector2;
+    private bool _canSplode;
+
+    private void Start()
+    {
+        _canSplode = false;
+        StartCoroutine(SplodeBuffer());
+        Destroy(gameObject, 3);
+    }
 
     void Update()
     {
@@ -19,7 +27,16 @@ public class FlungPilot : Projectile
 
     public override void Splode()
     {
-        Instantiate(_bloodPrefab, this.transform.position, this.transform.rotation);
-        Destroy(gameObject);
+        if(_canSplode)
+        {
+            Instantiate(_bloodPrefab, this.transform.position, this.transform.rotation);
+            Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator SplodeBuffer()
+    {
+        yield return new WaitForSeconds(.25f);
+        _canSplode = true;
     }
 }
