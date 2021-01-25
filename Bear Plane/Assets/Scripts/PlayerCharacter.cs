@@ -41,9 +41,19 @@ public class PlayerCharacter : MonoBehaviour
         }
     }
 
-    public void HandlePhoneInput(Vector2 initialTouchPosition, Vector2 currentTouchPosition)
+    //public void HandlePhoneInput(Vector2 initialTouchPosition, Vector2 currentTouchPosition)
+    //{
+    //    Vector2 directionRelativeToPhoneMiddle = currentTouchPosition - initialTouchPosition;
+    //    controller.Move(directionRelativeToPhoneMiddle.x * Time.fixedDeltaTime, _crouch, _jump);
+    //}
+
+    public void HandleJoystickInput(Vector2 joystickDirection)
     {
-        Vector2 directionRelativeToPhoneMiddle = currentTouchPosition - initialTouchPosition;
-        controller.Move(directionRelativeToPhoneMiddle.x * Time.fixedDeltaTime, _crouch, _jump);
+        controller.Move((joystickDirection.x * runSpeed) * Time.fixedDeltaTime, _crouch, _jump);
+    }
+
+    public void HandleJumpPressed()
+    {
+        _jump = true;
     }
 }

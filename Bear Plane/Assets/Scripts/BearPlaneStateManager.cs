@@ -36,7 +36,7 @@ public class BearPlaneStateManager : MonoBehaviour
     [SerializeField] private AudioSource _openWings;
     [SerializeField] private AudioSource _closeWings;
 
-    private bool _isPlane;
+    [HideInInspector] public bool isPlane;
 
     void Awake()
     {
@@ -69,11 +69,11 @@ public class BearPlaneStateManager : MonoBehaviour
 
     void DetermineIsPlaneController()
     {
-        if (Input.GetButtonDown("Jump") && !_platformerCharacter.controller.isGrounded() && !_isPlane)
+        if (Input.GetButtonDown("Jump") && !_platformerCharacter.controller.isGrounded() && !isPlane)
         {
             SwitchToPlaneMechanics();
         }
-        else if (Input.GetButtonUp("Jump") && _isPlane)
+        else if (Input.GetButtonUp("Jump") && isPlane)
         {
             SwitchToBearMechanics();
         }
@@ -81,11 +81,18 @@ public class BearPlaneStateManager : MonoBehaviour
 
     public void HandleJumpButtonPressed(bool isPressed)
     {
-        if (isPressed && !_platformerCharacter.controller.isGrounded() && !_isPlane)
+        if (isPressed  && !isPlane)
         {
-            SwitchToPlaneMechanics();
+            if (!_platformerCharacter.controller.isGrounded())
+            {
+                SwitchToPlaneMechanics();
+            }
+            else
+            {
+                _platformerCharacter.HandleJumpPressed();
+            }
         }
-        else if (!isPressed && _isPlane)
+        else if (!isPressed && isPlane)
         {
             SwitchToBearMechanics();
         }
@@ -93,7 +100,7 @@ public class BearPlaneStateManager : MonoBehaviour
 
     void SwitchToBearMechanics()
     {
-        _isPlane = false;
+        isPlane = false;
         _sprite.sprite = _idle;
         _planeMechanics.enabled = false;
         _bearMechanics.enabled = true;
@@ -105,7 +112,7 @@ public class BearPlaneStateManager : MonoBehaviour
     void SwitchToPlaneMechanics()
     {
         //TODO Force fly sprite if pound is still happening
-        _isPlane = true;
+        isPlane = true;
         _sprite.sprite = _fly;
         _planeMechanics.enabled = true;
         _bearMechanics.enabled = false;

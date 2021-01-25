@@ -59,10 +59,11 @@ public class BearMechanics : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Attack") || Input.GetMouseButtonDown(0))
-        {
-            Pound();
-        }
+        ////if (Input.GetButtonDown("Attack") || Input.GetMouseButtonDown(0))
+        ////{
+        ////    print("hi");
+        ////    Pound();
+        ////}
 
         DetermineAttackController();
     }

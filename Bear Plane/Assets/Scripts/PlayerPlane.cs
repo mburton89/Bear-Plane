@@ -52,12 +52,17 @@ public sealed class PlayerPlane : Plane
         _canFire = true;
     }
 
-    public void HandlePhoneInput(Vector2 initialTouchPosition, Vector2 currentTouchPosition)
-    {
-        print("initialTouchPosition: " + initialTouchPosition);
-        print("currentTouchPosition: " + currentTouchPosition);
+    //public void HandlePhoneInput(Vector2 initialTouchPosition, Vector2 currentTouchPosition)
+    //{
+    //    print("initialTouchPosition: " + initialTouchPosition);
+    //    print("currentTouchPosition: " + currentTouchPosition);
 
-        Vector2 directionRelativeToPhoneMiddle = currentTouchPosition - initialTouchPosition;
-        Move(directionRelativeToPhoneMiddle.normalized);
+    //    Vector2 directionRelativeToPhoneMiddle = currentTouchPosition - initialTouchPosition;
+    //    Move(directionRelativeToPhoneMiddle.normalized);
+    //}
+
+    public void HandleJoystickInput(Vector2 joystickDirection)
+    {
+        Move(joystickDirection);
     }
 }
