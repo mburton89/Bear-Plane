@@ -50,13 +50,7 @@ public class TouchInputManager : MonoBehaviour
 
     void Attack()
     {
-        if (_bearPlaneStateManager.isPlane)
-        {
-            _playerPlane.FireProjectile(Vector2.right);
-        }
-        else
-        {
-            _bearMechanics.Pound();
-        }
+       // _playerPlane.FireProjectile(Vector2.right);
+        _playerPlane.Maul();
     }
 }

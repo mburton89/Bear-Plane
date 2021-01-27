@@ -95,7 +95,7 @@ public class BearMechanics : MonoBehaviour
 
     public void ThrowPilot()
     {
-        if (_currentPlane != null)
+        if (_currentPlane != null && _currentPlane.hasPilot)
         {
             _currentPlane.LaunchPilot(throwSpeed);
         }

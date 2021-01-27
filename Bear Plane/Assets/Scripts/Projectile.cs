@@ -23,7 +23,10 @@ public abstract class Projectile : MonoBehaviour
         if (collision.tag == "Enemy" && collision.gameObject != _firer)
         {
             collision.GetComponent<Plane>().HandleHit(damageToGive);
-            collision.GetComponent<Plane>().LaunchPilot(40);
+            if(collision.GetComponent<Plane>().hasPilot)
+            {
+                collision.GetComponent<Plane>().LaunchPilot(40);
+            }
             Splode();
         }
 
