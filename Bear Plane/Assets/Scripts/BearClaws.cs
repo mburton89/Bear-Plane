@@ -23,7 +23,7 @@ public class BearClaws : MonoBehaviour
 
             Vector3 direction = plane.transform.position - transform.position;
 
-            plane.HandleHit(damageToGive);
+            plane.HandleHit(damageToGive, direction);
             _audioSource.Play();
             ScreenShaker.Instance.ShakeScreen(0.1f, 0.2f);
             if (plane.hasPilot)

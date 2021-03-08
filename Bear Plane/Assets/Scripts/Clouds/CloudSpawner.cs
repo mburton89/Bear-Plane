@@ -4,37 +4,43 @@ using UnityEngine;
 
 public class CloudSpawner : MonoBehaviour
 {
-    [SerializeField] List<GameObject> _cloudPrefabs;
-    [SerializeField] float _minZ;
-    [SerializeField] float _maxZ;
+    [SerializeField] List<Cloud> _cloudPrefabs;
+    [SerializeField] List<Cloud> _startingClouds;
+    [SerializeField] int _minZ;
+    [SerializeField] int _maxZ;
     [SerializeField] float _minY;
     [SerializeField] float _maxY;
     [SerializeField] float _xSpawnPos;
-
-    [SerializeField] float _distanceBetweenSpawns;
-    private float _prevX;
-    private float _currentX;
+    [SerializeField] float _cloudSpeed;
+    [SerializeField] float _secondsBetweenSpawns;
 
     void Start()
     {
-        _currentX = transform.position.x;
-        _prevX = _currentX;
-    }
+        StartCoroutine(SpawnCloudCo());
 
-    void Update()
-    {
-        _currentX = transform.position.x;
-        if (_currentX - _prevX >= _distanceBetweenSpawns)
+        foreach (Cloud startingCloud in _startingClouds)
         {
-            SpawnCloud();
-            _prevX = _currentX;
+            startingCloud.Init(-_xSpawnPos, _cloudSpeed, startingCloud.spriteRenderer.sortingOrder);
         }
     }
 
     void SpawnCloud()
     {
-        Vector3 spawnPos = new Vector3(_xSpawnPos + _currentX, Random.Range(_minY, _maxY), Random.Range(_minZ, _maxZ));
-        GameObject cloud = Instantiate(_cloudPrefabs[Random.Range(0, _cloudPrefabs.Count)], spawnPos, transform.rotation, null);
-        cloud.GetComponent<SpriteRenderer>().sortingOrder = -(int)spawnPos.z;
+        int randZ = 0;
+        while (randZ == 0 || randZ == 1)
+        {
+            randZ = Random.Range(_minZ, _maxZ);
+        }
+
+        Vector3 spawnPos = new Vector3(_xSpawnPos, Random.Range(_minY, _maxY), randZ);
+        Cloud cloud = Instantiate(_cloudPrefabs[Random.Range(0, _cloudPrefabs.Count)], spawnPos, transform.rotation, null) as Cloud;
+        cloud.Init(-_xSpawnPos, _cloudSpeed, -(int)spawnPos.z);
+    }
+
+    private IEnumerator SpawnCloudCo()
+    {
+        yield return new WaitForSeconds(_secondsBetweenSpawns);
+        SpawnCloud();
+        StartCoroutine(SpawnCloudCo());
     }
 }

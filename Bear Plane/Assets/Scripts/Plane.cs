@@ -196,6 +196,8 @@ public class Plane : MonoBehaviour
                 }
             }
             PlayHitSound();
+
+            rigidBody2D.AddRelativeForce(directionDamageCameFrom * 1000);
         }
         else
         {

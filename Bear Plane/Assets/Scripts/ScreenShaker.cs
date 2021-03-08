@@ -21,9 +21,11 @@ public class ScreenShaker : MonoBehaviour
         {
             float _x = 0;
             float _y = 0;
+            float _z = 0;
             _x = Random.Range(-_intensity, _intensity);
             _y = Random.Range(-_intensity, _intensity);
-            Vector3 newCameraPos = new Vector3(_x, _y, -10);
+            _z = Random.Range(-_intensity, _intensity);
+            Vector3 newCameraPos = new Vector3(_x, _y, _z);
             transform.position = newCameraPos;
         }
     }
@@ -38,7 +40,7 @@ public class ScreenShaker : MonoBehaviour
         _canShake = true;
         yield return new WaitForSeconds(_duration);
         _canShake = false;
-        transform.position = new Vector3(0, 0, -10);
+        transform.position = new Vector3(0, 0, 0);
     }
 
     public void ShakeScreen(float intensity, float duration)
@@ -57,7 +59,7 @@ public class ScreenShaker : MonoBehaviour
         _canShake = true;
         yield return new WaitForSeconds(_duration);
         _canShake = false;
-        transform.position = new Vector3(0, 0, -10);
+        transform.position = new Vector3(0, 0, 0);
         _intensity = initialIntensity;
         _duration = initialDuration;
     }
