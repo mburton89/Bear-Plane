@@ -10,12 +10,9 @@ public class BounceOffEdge : MonoBehaviour
     void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
-
-        print(Camera.main.WorldToScreenPoint(transform.position));
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         Vector3 tmpPos = Camera.main.WorldToScreenPoint(transform.position);
 
@@ -29,11 +26,11 @@ public class BounceOffEdge : MonoBehaviour
             transform.position = _prevPosition;
             _rigidBody2D.velocity = new Vector2(-_rigidBody2D.velocity.x, _rigidBody2D.velocity.y);
         }
-        else if (tmpPos.y < 0)
-        {
-            transform.position = _prevPosition;
-            _rigidBody2D.velocity = new Vector2(_rigidBody2D.velocity.x, -_rigidBody2D.velocity.y);
-        }
+        //else if (tmpPos.y < 0)
+        //{
+        //    transform.position = _prevPosition;
+        //    _rigidBody2D.velocity = new Vector2(_rigidBody2D.velocity.x, -_rigidBody2D.velocity.y);
+        //}
         else if (tmpPos.y > Screen.height)
         {
             transform.position = _prevPosition;
