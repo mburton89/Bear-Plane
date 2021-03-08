@@ -178,4 +178,61 @@ public class Plane : MonoBehaviour
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
     }
+
+    //Directional Splosions
+    public void HandleHit(int damageTaken, Vector3 directionDamageCameFrom)
+    {
+        currentArmor = currentArmor - damageTaken;
+
+        if (currentArmor > 0)
+        {
+            if (currentArmor == 1)
+            {
+                rigidBody2D.freezeRotation = false;
+                isToast = true;
+                if (GetComponent<PlaneAI>())
+                {
+                    GetComponent<PlaneAI>().enabled = false;
+                }
+            }
+            PlayHitSound();
+        }
+        else
+        {
+            Splode(directionDamageCameFrom);
+        }
+    }
+
+    public void Splode(Vector3 directionDamageCameFrom)
+    {
+        if (hasPilot)
+        {
+            LaunchPilot(40, directionDamageCameFrom);
+        }
+
+        if (tag == "Enemy")
+        {
+            BearPlaneStateManager.Instance.AddEnergy(energyToGivePlayer);
+            ScoreManager.Instance.IncrementScore();
+        }
+        Instantiate(_explosionPrefab, this.transform.position, this.transform.rotation);
+        Destroy(gameObject);
+
+        if (GetComponent<BearPlaneStateManager>())
+        {
+            DeathManager.Instance.HandleDeath();
+        }
+    }
+
+    public void LaunchPilot(int throwSpeed, Vector3 direction)
+    {
+        Projectile pilot = Instantiate(_pilotPrefab, this.transform.position, this.transform.rotation, null);
+        pilot.Init(this.gameObject);
+        pilot.GetComponent<Rigidbody2D>().AddForce(direction * throwSpeed);
+
+        if (GetComponent<PlaneAI>())
+        {
+            GetComponent<PlaneAI>().enabled = false;
+        }
+    }
 }

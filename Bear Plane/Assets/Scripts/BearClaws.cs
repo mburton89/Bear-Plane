@@ -20,12 +20,15 @@ public class BearClaws : MonoBehaviour
         if (collision.tag == "Enemy")
         {
             Plane plane = collision.GetComponent<Plane>();
+
+            Vector3 direction = plane.transform.position - transform.position;
+
             plane.HandleHit(damageToGive);
             _audioSource.Play();
             ScreenShaker.Instance.ShakeScreen(0.1f, 0.2f);
             if (plane.hasPilot)
             {
-                plane.LaunchPilot(40);
+                plane.LaunchPilot(40, direction);
                 plane.hasPilot = false;
                 //plane.Splode();
             }
