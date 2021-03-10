@@ -7035,7 +7035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1267345392, guid: 221a4e71693ca8347a2a42add0f35d52, type: 3}
       propertyPath: acceleration
-      value: 35
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 1267345392, guid: 221a4e71693ca8347a2a42add0f35d52, type: 3}
       propertyPath: _sprite
@@ -7110,7 +7110,7 @@ PrefabInstance:
     - target: {fileID: 6706010533172630916, guid: 221a4e71693ca8347a2a42add0f35d52,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.35
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6706010533172630916, guid: 221a4e71693ca8347a2a42add0f35d52,
         type: 3}
@@ -7121,6 +7121,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.x
       value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8132962546615950943, guid: 221a4e71693ca8347a2a42add0f35d52,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 8301982599150984128, guid: 221a4e71693ca8347a2a42add0f35d52,
         type: 3}

@@ -73,7 +73,7 @@ public class Plane : MonoBehaviour
     {
         if (rigidBody2D != null)
         {
-            rigidBody2D.AddForce(direction * acceleration);
+            rigidBody2D.AddForce(direction * acceleration * Time.deltaTime);
         }
     }
 
@@ -162,6 +162,10 @@ public class Plane : MonoBehaviour
 
     public void LaunchPilot(int throwSpeed)
     {
+        if (!hasPilot) return;
+
+        hasPilot = false;
+
         Projectile pilot = Instantiate(_pilotPrefab, this.transform.position, this.transform.rotation, null);
         pilot.Init(this.gameObject);
         pilot.GetComponent<Rigidbody2D>().AddForce(new Vector3(-0.5f, 1, 0) * throwSpeed);
@@ -228,6 +232,10 @@ public class Plane : MonoBehaviour
 
     public void LaunchPilot(int throwSpeed, Vector3 direction)
     {
+        if (!hasPilot) return;
+
+        hasPilot = false;
+
         Projectile pilot = Instantiate(_pilotPrefab, this.transform.position, this.transform.rotation, null);
         pilot.Init(this.gameObject);
         pilot.GetComponent<Rigidbody2D>().AddForce(direction * throwSpeed);

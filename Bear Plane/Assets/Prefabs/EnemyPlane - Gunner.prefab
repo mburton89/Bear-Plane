@@ -52,6 +52,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -63,6 +65,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -119,14 +122,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009da2058ed62954c8ab8cd6a86bcb2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 25
+  acceleration: 928.5715
   maxSpeed: 1.5
   maxArmor: 5
   projectileSpeed: 500
   energyToGivePlayer: 0.15
   fireRate: 2
   currentArmor: 0
-  rigidbody2D: {fileID: 0}
+  rigidBody2D: {fileID: 0}
   _fullHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 05d8e585d109c1a459bdfc3a44266326,
     type: 3}
   _lowHealthThrustParticlePrefab: {fileID: 4174124195173150402, guid: 78adaa260207d7a4c8864e6acec018c4,
@@ -157,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc83077cb10866d4890db443341b869f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _flyLeft: 0
 --- !u!60 &7597260980007038050
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -297,6 +301,10 @@ EdgeCollider2D:
   m_Points:
   - {x: -0.87, y: 0}
   - {x: 1.1, y: 0}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &3958686156719685667
 GameObject:
   m_ObjectHideFlags: 0

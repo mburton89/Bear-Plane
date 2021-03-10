@@ -28,7 +28,8 @@ public class BearClaws : MonoBehaviour
             ScreenShaker.Instance.ShakeScreen(0.1f, 0.2f);
             if (plane.hasPilot)
             {
-                plane.LaunchPilot(40, direction);
+                print(direction.normalized);
+                plane.LaunchPilot(40, direction.normalized);
                 plane.hasPilot = false;
                 //plane.Splode();
             }
