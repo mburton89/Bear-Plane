@@ -26,6 +26,8 @@ public class Plane : MonoBehaviour
     [HideInInspector] public bool isToast = false;
     [HideInInspector] public bool canShoot = true;
 
+    private bool _isEnemy;
+
     //private void OnTriggerEnter2D(Collider2D collision)
     //{
     //    if (collision.GetComponent<Plane>() && enabled == true)
@@ -43,6 +45,7 @@ public class Plane : MonoBehaviour
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
         currentArmor = maxArmor;
+        _isEnemy = GetComponent<EnemyPlane>();
     }
 
     private void Update()
@@ -59,6 +62,12 @@ public class Plane : MonoBehaviour
         }
 
         CreateThrustParticles();
+
+        if (_isEnemy && !hasPilot)
+        {
+            maxSpeed += 1f;
+            Move(Vector2.left);
+        }
     }
 
     void FixedUpdate()
@@ -88,10 +97,7 @@ public class Plane : MonoBehaviour
         {
             ThrustParticle thrustParticle = Instantiate(_fullHealthThrustParticlePrefab, spawnPos, this.transform.rotation, this.transform);
         }
-        //else if (currentArmor == 2)
-        //{
-        //    ThrustParticle thrustParticle = Instantiate(_lowHealthThrustParticlePrefab, spawnPos, this.transform.rotation, this.transform);
-        //}
+
         else
         {
             ThrustParticle thrustParticle = Instantiate(_noHealthThrustParticlePrefab, spawnPos, this.transform.rotation, this.transform);
@@ -202,6 +208,7 @@ public class Plane : MonoBehaviour
             PlayHitSound();
 
             rigidBody2D.AddRelativeForce(directionDamageCameFrom * 1000);
+            rigidBody2D.AddTorque(directionDamageCameFrom.x * 100);
         }
         else
         {

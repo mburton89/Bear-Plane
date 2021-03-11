@@ -22,7 +22,7 @@ public class FlungPilot : Projectile
 
         windForce -= 0.02f;
         windForceVector2 = new Vector2(windForce, 0);
-        rigidbody2D.AddForce(windForceVector2);
+        rigidbody2D.AddForce(windForceVector2 * Time.deltaTime);
     }
 
     public override void Splode()

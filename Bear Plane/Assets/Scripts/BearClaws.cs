@@ -14,7 +14,6 @@ public class BearClaws : MonoBehaviour
     {
         _controller = controller;
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Enemy")
@@ -25,7 +24,7 @@ public class BearClaws : MonoBehaviour
 
             plane.HandleHit(damageToGive, direction);
             _audioSource.Play();
-            ScreenShaker.Instance.ShakeScreen(0.1f, 0.2f);
+            ScreenShaker.Instance.ShakeScreen(0.2f, 0.3f);
             if (plane.hasPilot)
             {
                 print(direction.normalized);

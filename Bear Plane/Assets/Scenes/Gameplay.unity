@@ -7031,11 +7031,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1267345392, guid: 221a4e71693ca8347a2a42add0f35d52, type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1267345392, guid: 221a4e71693ca8347a2a42add0f35d52, type: 3}
       propertyPath: acceleration
-      value: 350
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 1267345392, guid: 221a4e71693ca8347a2a42add0f35d52, type: 3}
       propertyPath: _sprite
