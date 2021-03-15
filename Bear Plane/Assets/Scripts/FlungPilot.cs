@@ -16,13 +16,13 @@ public class FlungPilot : Projectile
         Destroy(gameObject, 3);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         rigidbody2D.rotation += 6f;
 
         windForce -= 0.02f;
         windForceVector2 = new Vector2(windForce, 0);
-        rigidbody2D.AddForce(windForceVector2 * Time.deltaTime);
+        rigidbody2D.AddForce(windForceVector2 * 2);
     }
 
     public override void Splode()

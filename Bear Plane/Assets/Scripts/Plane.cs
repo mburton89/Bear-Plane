@@ -28,19 +28,6 @@ public class Plane : MonoBehaviour
 
     private bool _isEnemy;
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.GetComponent<Plane>() && enabled == true)
-    //    {
-    //        Plane collidingPlane = collision.GetComponent<Plane>();
-    //        if (collidingPlane.enabled == true)
-    //        {
-    //            collidingPlane.Splode();
-    //            Splode();
-    //        }
-    //    }
-    //}
-
     public void Awake()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
@@ -48,7 +35,7 @@ public class Plane : MonoBehaviour
         _isEnemy = GetComponent<EnemyPlane>();
     }
 
-    private void Update()
+    void FixedUpdate()
     {
         if (PlayerSwap.isPlane && isControlling)
         {
@@ -65,13 +52,11 @@ public class Plane : MonoBehaviour
 
         if (_isEnemy && !hasPilot)
         {
-            maxSpeed += 1f;
-            Move(Vector2.left);
-        }
-    }
+            maxSpeed = 100;
+            acceleration += 3f;
+            Move(Vector3.left);
+        } 
 
-    void FixedUpdate()
-    {
         if (rigidBody2D.velocity.magnitude > maxSpeed)
         {
             rigidBody2D.velocity = rigidBody2D.velocity.normalized * maxSpeed;
@@ -101,8 +86,8 @@ public class Plane : MonoBehaviour
         else
         {
             ThrustParticle thrustParticle = Instantiate(_noHealthThrustParticlePrefab, spawnPos, this.transform.rotation, this.transform);
-            rigidBody2D.rotation += -0.1f;
-            rigidBody2D.gravityScale += 0.002f;
+            rigidBody2D.rotation += -0.2f;
+            rigidBody2D.gravityScale += 0.006f;
         }
     }
 
