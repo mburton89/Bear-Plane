@@ -23,6 +23,14 @@ public class TouchInputManager : MonoBehaviour
         _bearMechanics = FindObjectOfType<BearMechanics>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        {
+            Attack();
+        }
+    }
+
     public void FixedUpdate()
     {
         Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
