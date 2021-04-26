@@ -28,6 +28,11 @@ public abstract class Projectile : MonoBehaviour
                 collision.GetComponent<Plane>().LaunchPilot(40);
             }
             Splode();
+
+            if (GetComponent<FlungPilot>())
+            {
+                AchievementDisplayManager.Instance.ShowBloodyMess();
+            }
         }
 
         if (collision.tag == "Player" && collision.gameObject != _firer && !GetComponent<FlungPilot>())

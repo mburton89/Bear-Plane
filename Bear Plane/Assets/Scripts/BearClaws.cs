@@ -36,7 +36,11 @@ public class BearClaws : MonoBehaviour
 
         if (collision.GetComponent<FlungPilot>())
         {
-            collision.GetComponent<FlungPilot>().Splode();
+            if (collision.GetComponent<FlungPilot>().canSplode)
+            {
+                collision.GetComponent<FlungPilot>().Splode();
+                AchievementDisplayManager.Instance.ShowPilotSwat();
+            }
         }
 
         if (collision.GetComponent<Bullet>())
