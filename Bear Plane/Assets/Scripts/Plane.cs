@@ -26,26 +26,16 @@ public class Plane : MonoBehaviour
     [HideInInspector] public bool isToast = false;
     [HideInInspector] public bool canShoot = true;
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.GetComponent<Plane>() && enabled == true)
-    //    {
-    //        Plane collidingPlane = collision.GetComponent<Plane>();
-    //        if (collidingPlane.enabled == true)
-    //        {
-    //            collidingPlane.Splode();
-    //            Splode();
-    //        }
-    //    }
-    //}
+    private bool _isEnemy;
 
     public void Awake()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
         currentArmor = maxArmor;
+        _isEnemy = GetComponent<EnemyPlane>();
     }
 
-    private void Update()
+    void FixedUpdate()
     {
         if (PlayerSwap.isPlane && isControlling)
         {
@@ -59,10 +49,14 @@ public class Plane : MonoBehaviour
         }
 
         CreateThrustParticles();
-    }
 
-    void FixedUpdate()
-    {
+        if (_isEnemy && !hasPilot)
+        {
+            maxSpeed = 100;
+            acceleration += 3f;
+            Move(Vector3.left);
+        } 
+
         if (rigidBody2D.velocity.magnitude > maxSpeed)
         {
             rigidBody2D.velocity = rigidBody2D.velocity.normalized * maxSpeed;
@@ -73,7 +67,7 @@ public class Plane : MonoBehaviour
     {
         if (rigidBody2D != null)
         {
-            rigidBody2D.AddForce(direction * acceleration);
+            rigidBody2D.AddForce(direction * acceleration * Time.deltaTime);
         }
     }
 
@@ -88,15 +82,12 @@ public class Plane : MonoBehaviour
         {
             ThrustParticle thrustParticle = Instantiate(_fullHealthThrustParticlePrefab, spawnPos, this.transform.rotation, this.transform);
         }
-        //else if (currentArmor == 2)
-        //{
-        //    ThrustParticle thrustParticle = Instantiate(_lowHealthThrustParticlePrefab, spawnPos, this.transform.rotation, this.transform);
-        //}
+
         else
         {
             ThrustParticle thrustParticle = Instantiate(_noHealthThrustParticlePrefab, spawnPos, this.transform.rotation, this.transform);
-            rigidBody2D.rotation += -0.1f;
-            rigidBody2D.gravityScale += 0.002f;
+            rigidBody2D.rotation += -0.2f;
+            rigidBody2D.gravityScale += 0.006f;
         }
     }
 
@@ -162,6 +153,10 @@ public class Plane : MonoBehaviour
 
     public void LaunchPilot(int throwSpeed)
     {
+        if (!hasPilot) return;
+
+        hasPilot = false;
+
         Projectile pilot = Instantiate(_pilotPrefab, this.transform.position, this.transform.rotation, null);
         pilot.Init(this.gameObject);
         pilot.GetComponent<Rigidbody2D>().AddForce(new Vector3(-0.5f, 1, 0) * throwSpeed);
@@ -198,6 +193,7 @@ public class Plane : MonoBehaviour
             PlayHitSound();
 
             rigidBody2D.AddRelativeForce(directionDamageCameFrom * 1000);
+            rigidBody2D.AddTorque(directionDamageCameFrom.x * 100);
         }
         else
         {
@@ -228,6 +224,10 @@ public class Plane : MonoBehaviour
 
     public void LaunchPilot(int throwSpeed, Vector3 direction)
     {
+        if (!hasPilot) return;
+
+        hasPilot = false;
+
         Projectile pilot = Instantiate(_pilotPrefab, this.transform.position, this.transform.rotation, null);
         pilot.Init(this.gameObject);
         pilot.GetComponent<Rigidbody2D>().AddForce(direction * throwSpeed);

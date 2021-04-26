@@ -14,7 +14,6 @@ public class BearClaws : MonoBehaviour
     {
         _controller = controller;
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Enemy")
@@ -25,10 +24,11 @@ public class BearClaws : MonoBehaviour
 
             plane.HandleHit(damageToGive, direction);
             _audioSource.Play();
-            ScreenShaker.Instance.ShakeScreen(0.1f, 0.2f);
+            ScreenShaker.Instance.ShakeScreen(0.2f, 0.3f);
             if (plane.hasPilot)
             {
-                plane.LaunchPilot(40, direction);
+                print(direction.normalized);
+                plane.LaunchPilot(40, direction.normalized);
                 plane.hasPilot = false;
                 //plane.Splode();
             }
@@ -36,7 +36,11 @@ public class BearClaws : MonoBehaviour
 
         if (collision.GetComponent<FlungPilot>())
         {
-            collision.GetComponent<FlungPilot>().Splode();
+            if (collision.GetComponent<FlungPilot>().canSplode)
+            {
+                collision.GetComponent<FlungPilot>().Splode();
+                AchievementDisplayManager.Instance.ShowPilotSwat();
+            }
         }
 
         if (collision.GetComponent<Bullet>())
