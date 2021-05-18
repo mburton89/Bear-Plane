@@ -39,6 +39,7 @@ public class BearClaws : MonoBehaviour
             if (collision.GetComponent<FlungPilot>().canSplode)
             {
                 collision.GetComponent<FlungPilot>().Splode();
+                FuelGauge.Instance.AddUnitsOfFuel(40);
                 AchievementDisplayManager.Instance.ShowPilotSwat();
             }
         }

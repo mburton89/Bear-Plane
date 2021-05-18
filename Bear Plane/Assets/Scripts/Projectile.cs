@@ -32,6 +32,7 @@ public abstract class Projectile : MonoBehaviour
             if (GetComponent<FlungPilot>())
             {
                 AchievementDisplayManager.Instance.ShowBloodyMess();
+                FuelGauge.Instance.AddUnitsOfFuel(40);
             }
         }
 

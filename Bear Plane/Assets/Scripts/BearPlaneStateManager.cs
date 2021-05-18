@@ -140,13 +140,13 @@ public class BearPlaneStateManager : MonoBehaviour
         {
             _energy = maxEnergy;
         }
-        EnergyBar.Instance.UpdateEnergyBar(_energy);
+        //EnergyBar.Instance.UpdateEnergyBar(_energy);
     }
 
     public void UseEnergy(float amountToUse)
     {
         _energy -= amountToUse;
-        EnergyBar.Instance.UpdateEnergyBar(_energy);
+        //EnergyBar.Instance.UpdateEnergyBar(_energy);
         if (_energy < 0)
         {
             //TODO: Handle running out of energy
@@ -164,7 +164,8 @@ public class BearPlaneStateManager : MonoBehaviour
         }
 
         float healthDecimal = (float)_health / (float)maxHealth;
-        HealthBar.Instance.UpdateHealthBar(healthDecimal);
+        //HealthBar.Instance.UpdateHealthBar(healthDecimal);
+        FuelGauge.Instance.AddUnitsOfFuel(-20f);
         _planeMechanics.PlayHitSound();
     }
 }

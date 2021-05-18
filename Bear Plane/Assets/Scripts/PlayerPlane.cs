@@ -39,16 +39,16 @@ public sealed class PlayerPlane : Plane
         Vector2 direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Move(direction);
 
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    Maul();
-        //    //BearPlaneStateManager.Instance.UseEnergy(shootingEnergyConsumptionRate);
-        //}
-        //else if (Input.GetMouseButtonDown(1))
-        //{
-        //    FireProjectile(Vector2.right);
-        //    BearPlaneStateManager.Instance.UseEnergy(shootingEnergyConsumptionRate);
-        //}
+        if (Input.GetMouseButtonDown(0))
+        {
+            Maul();
+            //BearPlaneStateManager.Instance.UseEnergy(shootingEnergyConsumptionRate);
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            FireProjectile(Vector2.right);
+            BearPlaneStateManager.Instance.UseEnergy(shootingEnergyConsumptionRate);
+        }
         DetermineAttackController();
 
         CreateThrustParticles();
