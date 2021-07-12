@@ -6046,9 +6046,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPlanePrefabs:
-  - {fileID: 1176713042, guid: 9c47dd356a929a44e844ef7c3a4cc665, type: 3}
+  - {fileID: 1176713042, guid: a0d3477e9e168f847b0038eae99f81cc, type: 3}
   - {fileID: 1176713042, guid: 56170f17cc1e7e1479405da14808f7b3, type: 3}
   - {fileID: 1176713042, guid: 97ca995efeeae30449c349960669b186, type: 3}
+  _enemyLeftFlyPlane: {fileID: 1176713042, guid: 9c47dd356a929a44e844ef7c3a4cc665,
+    type: 3}
   _secondsBetweenSpawns: 2
   _x: 11.5
   _maxY: 3
@@ -6066,10 +6068,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPlanePrefabs:
-  - {fileID: 1176713042, guid: 9c47dd356a929a44e844ef7c3a4cc665, type: 3}
+  - {fileID: 1176713042, guid: a0d3477e9e168f847b0038eae99f81cc, type: 3}
   - {fileID: 1176713042, guid: 56170f17cc1e7e1479405da14808f7b3, type: 3}
   - {fileID: 1176713042, guid: 97ca995efeeae30449c349960669b186, type: 3}
-  - {fileID: 1176713042, guid: 9c47dd356a929a44e844ef7c3a4cc665, type: 3}
+  - {fileID: 1176713042, guid: a0d3477e9e168f847b0038eae99f81cc, type: 3}
+  _enemyLeftFlyPlane: {fileID: 1176713042, guid: 9c47dd356a929a44e844ef7c3a4cc665,
+    type: 3}
   _secondsBetweenSpawns: 2.5
   _x: 11.5
   _maxY: 3
@@ -7818,6 +7822,11 @@ PrefabInstance:
         type: 3}
       propertyPath: energyConsumptionAmount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843227478803384764, guid: 221a4e71693ca8347a2a42add0f35d52,
+        type: 3}
+      propertyPath: damageToGive
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6706010533172630916, guid: 221a4e71693ca8347a2a42add0f35d52,
         type: 3}

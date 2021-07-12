@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5693388861647726883}
   - component: {fileID: 2908411216438137465}
   m_Layer: 0
-  m_Name: EnemyPlane - GunnerMoveLeft
+  m_Name: EnemyPlane - GunnerMoveRight
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 928.5715
   maxSpeed: 2.5
-  maxArmor: 2
+  maxArmor: 3
   projectileSpeed: 500
   energyToGivePlayer: 0.15
   fireRate: 2
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc83077cb10866d4890db443341b869f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flyLeft: 1
+  _flyLeft: 0
 --- !u!114 &5693388861647726883
 MonoBehaviour:
   m_ObjectHideFlags: 0

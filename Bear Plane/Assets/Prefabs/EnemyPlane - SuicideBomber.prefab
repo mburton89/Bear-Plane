@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 928.5715
   maxSpeed: 3
-  maxArmor: 2
+  maxArmor: 3
   projectileSpeed: 800
   energyToGivePlayer: 0.15
   fireRate: 2

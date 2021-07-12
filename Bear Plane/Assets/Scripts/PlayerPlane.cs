@@ -24,6 +24,8 @@ public sealed class PlayerPlane : Plane
     [SerializeField] private List<AudioClip> _growls;
     [SerializeField] private AudioSource _growlAudio;
 
+   // [SerializeField] FlungPilot tossedPilotPrefab;
+
     private void Awake()
     {
         base.Awake();
@@ -48,6 +50,11 @@ public sealed class PlayerPlane : Plane
         {
             FireProjectile(Vector2.right);
             BearPlaneStateManager.Instance.UseEnergy(shootingEnergyConsumptionRate);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            hasPilot = true;
+            LaunchPilot(32);
         }
         DetermineAttackController();
 
@@ -110,5 +117,10 @@ public sealed class PlayerPlane : Plane
         _sprite.sprite = _idle;
         BearPlaneStateManager.Instance.UseEnergy(_bearClaws.energyConsumptionAmount);
         _canAttack = true;
+    }
+
+    void TossPilot()
+    {
+
     }
 }

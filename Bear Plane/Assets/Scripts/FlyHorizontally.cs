@@ -18,6 +18,8 @@ public class FlyHorizontally : MonoBehaviour
         if (_flyLeft)
         {
             _directionToFly = Vector3.left;
+            _plane.maxSpeed *= 5;
+            _plane.acceleration *= 5;
         }
         else
         {
