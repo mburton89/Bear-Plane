@@ -113,7 +113,10 @@ public class Plane : MonoBehaviour
         {
             BearPlaneStateManager.Instance.AddEnergy(energyToGivePlayer);
             ScoreManager.Instance.IncrementScore();
-            FuelGauge.Instance.AddUnitsOfFuel(5);
+            if (FuelGauge.Instance != null)
+            {
+                FuelGauge.Instance.AddUnitsOfFuel(5);
+            }
         }
         Instantiate(_explosionPrefab, this.transform.position, this.transform.rotation);
         Destroy(gameObject);

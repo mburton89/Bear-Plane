@@ -165,7 +165,10 @@ public class BearPlaneStateManager : MonoBehaviour
 
         float healthDecimal = (float)_health / (float)maxHealth;
         //HealthBar.Instance.UpdateHealthBar(healthDecimal);
-        FuelGauge.Instance.AddUnitsOfFuel(-20f);
+        if (FuelGauge.Instance != null)
+        {
+            FuelGauge.Instance.AddUnitsOfFuel(-20f);
+        }
         _planeMechanics.PlayHitSound();
     }
 }
